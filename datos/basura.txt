@@ -1,0 +1,6 @@
+O,Restos de comida,0.5,2026-03-14
+P,Botella de agua,0.2,PET
+G,Papel de regalo,0.1,Casa
+O,Cáscaras de fruta,0.3,2026-03-15
+P,Bolsa de supermercado,0.1,HDPE
+G,Lata de refresco,0.4,Calle
