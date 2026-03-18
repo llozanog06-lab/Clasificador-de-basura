@@ -16,9 +16,9 @@ public class ClasificadorBasura {
         String linea;
 
         // Crear ficheros de salida
-        PrintWriter fwO = new PrintWriter(new FileWriter(organico));
-        PrintWriter fwP = new PrintWriter(new FileWriter(plasticos));
-        PrintWriter fwG = new PrintWriter(new FileWriter(general));
+        PrintWriter ficheroOrganico = new PrintWriter(new FileWriter(organico));
+        PrintWriter ficheroPlastico = new PrintWriter(new FileWriter(plasticos));
+        PrintWriter ficheroGeneral = new PrintWriter(new FileWriter(general));
 
         // Procesar cada línea del fichero
         while ((linea = br.readLine()) != null) {
@@ -30,19 +30,19 @@ public class ClasificadorBasura {
             switch (codigo) {
                 case "O":
                     String fechaCaducidad = datos[3];
-                    fwO.println(codigo + "," + descripcion + "," + peso + "," + fechaCaducidad);
+                    ficheroOrganico.println(codigo + "," + descripcion + "," + peso + "," + fechaCaducidad);
                     contO++;
                     pesoO += peso;
                     break;
                 case "P":
                     String tipoPlastico = datos[3];
-                    fwP.println(codigo + "," + descripcion + "," + peso + "," + tipoPlastico);
+                    ficheroPlastico.println(codigo + "," + descripcion + "," + peso + "," + tipoPlastico);
                     contP++;
                     pesoP += peso;
                     break;
                 case "G":
                     String origen = datos[3];
-                    fwG.println(codigo + "," + descripcion + "," + peso + "," + origen);
+                    ficheroGeneral.println(codigo + "," + descripcion + "," + peso + "," + origen);
                     contG++;
                     pesoG += peso;
                     break;
@@ -53,9 +53,9 @@ public class ClasificadorBasura {
 
         // Cerrar ficheros
         br.close();
-        fwO.close();
-        fwP.close();
-        fwG.close();
+        ficheroOrganico.close();
+        ficheroPlastico.close();
+        ficheroGeneral.close();
 
         // Informe final
         System.out.println("Informe de clasificación de basura:");
