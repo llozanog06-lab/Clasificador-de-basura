@@ -8,8 +8,8 @@ public class ClasificadorBasura {
         String plasticos = "plasticos.txt";
         String general = "general.txt";
 
-        Integer contO = 0, contP = 0, contG = 0;
-        double pesoO = 0, pesoP = 0, pesoG = 0;
+        Integer contadorOrganico = 0, contadorPlastico = 0, contadorGeneral = 0;
+        double pesoOrganico = 0, pesoPlastico = 0, pesoGeneral = 0;
 
         // Leer fichero de entrada
         BufferedReader br = new BufferedReader(new FileReader(basura));
@@ -31,20 +31,20 @@ public class ClasificadorBasura {
                 case "O":
                     String fechaCaducidad = datos[3];
                     ficheroOrganico.println(codigo + "," + descripcion + "," + peso + "," + fechaCaducidad);
-                    contO++;
-                    pesoO += peso;
+                    contadorOrganico++;
+                    pesoOrganico += peso;
                     break;
                 case "P":
                     String tipoPlastico = datos[3];
                     ficheroPlastico.println(codigo + "," + descripcion + "," + peso + "," + tipoPlastico);
-                    contP++;
-                    pesoP += peso;
+                    contadorPlastico++;
+                    pesoPlastico += peso;
                     break;
                 case "G":
                     String origen = datos[3];
                     ficheroGeneral.println(codigo + "," + descripcion + "," + peso + "," + origen);
-                    contG++;
-                    pesoG += peso;
+                    contadorGeneral++;
+                    pesoGeneral += peso;
                     break;
                 default:
                     System.out.println("Código de basura desconocido: " + codigo);
@@ -60,9 +60,9 @@ public class ClasificadorBasura {
         // Informe final
         System.out.println("Informe de clasificación de basura:");
         System.out.println("------------------------------------");
-        System.out.println("Orgánica: " + contO + " elementos, " + pesoO + " kg");
-        System.out.printf("Plásticos: %d elementos, %.1f kg%n", contP, pesoP);
-        System.out.println("General: " + contG + " elementos, " + pesoG + " kg");
-        System.out.println("Total: " + (contO + contP + contG) + " elementos, " + (pesoO + pesoP + pesoG) + " kg");
+        System.out.println("Orgánica: " + contadorOrganico + " elementos, " + pesoOrganico + " kg");
+        System.out.printf("Plásticos: %d elementos, %.1f kg%n", contadorPlastico, pesoPlastico);
+        System.out.println("General: " + contadorGeneral + " elementos, " + pesoGeneral + " kg");
+        System.out.println("Total: " + (contadorOrganico + contadorPlastico + contadorGeneral) + " elementos, " + (pesoOrganico + pesoPlastico + pesoGeneral) + " kg");
     }
 }
