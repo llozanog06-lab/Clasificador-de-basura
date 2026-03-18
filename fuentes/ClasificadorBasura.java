@@ -3,29 +3,29 @@ import java.util.*;
 
 public class ClasificadorBasura {
     public static void main(String[] args) throws IOException {
-        String a = "basura.txt";
-        String b = "organica.txt";
-        String c = "plasticos.txt";
-        String d = "general.txt";
+        String basura = "basura.txt";
+        String organico = "organica.txt";
+        String plasticos = "plasticos.txt";
+        String general = "general.txt";
 
-        int contO = 0, contP = 0, contG = 0;
+        Integer contO = 0, contP = 0, contG = 0;
         double pesoO = 0, pesoP = 0, pesoG = 0;
 
         // Leer fichero de entrada
-        BufferedReader br = new BufferedReader(new FileReader(a));
+        BufferedReader br = new BufferedReader(new FileReader(basura));
         String linea;
 
         // Crear ficheros de salida
-        PrintWriter fwO = new PrintWriter(new FileWriter(b));
-        PrintWriter fwP = new PrintWriter(new FileWriter(c));
-        PrintWriter fwG = new PrintWriter(new FileWriter(d));
+        PrintWriter fwO = new PrintWriter(new FileWriter(organico));
+        PrintWriter fwP = new PrintWriter(new FileWriter(plasticos));
+        PrintWriter fwG = new PrintWriter(new FileWriter(general));
 
         // Procesar cada línea del fichero
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split(",");
             String codigo = datos[0];
             String descripcion = datos[1];
-            double peso = Double.parseDouble(datos[2]);
+            Double peso = Double.parseDouble(datos[2]);
 
             switch (codigo) {
                 case "O":
@@ -66,4 +66,3 @@ public class ClasificadorBasura {
         System.out.println("Total: " + (contO + contP + contG) + " elementos, " + (pesoO + pesoP + pesoG) + " kg");
     }
 }
-
